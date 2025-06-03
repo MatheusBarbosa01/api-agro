@@ -21,7 +21,7 @@ public class TokenService {
         try {
             var algoritmo = Algorithm.HMAC256(secret);
             return JWT.create()
-                .withIssuer("API Badespi.inventario")
+                .withIssuer("API agro.agriculture")
                 .withSubject(usuario.getUsername())
                 .withClaim("nome", usuario.getNome())
                 .withExpiresAt(dataExpiracao())
@@ -34,7 +34,7 @@ public class TokenService {
     public String getSubject(String tokenJWT) {
         try {
             return JWT.require(Algorithm.HMAC256(secret))
-            .withIssuer("API Badespi.inventario")
+            .withIssuer("API agro.agriculture")
             .build()
             .verify(tokenJWT)
             .getSubject();
